@@ -1,0 +1,151 @@
+// ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, unused_field, unused_label, non_constant_identifier_names, unused_import
+
+import 'package:flutter/material.dart ';
+import 'package:flutter_application_1/widgets/widgets.dart';
+import 'package:flutter_application_1/views/signup.dart';
+import 'package:flutter_application_1/views/main_page.dart';
+
+class SignIn extends StatefulWidget {
+  @override
+  _SignInState createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  final _formKey = GlobalKey<FormState>();
+  late String email, password;
+
+  @override
+  Widget build(BuildContext context) {
+    final logo = Hero(
+      tag: 'hero',
+      child: CircleAvatar(
+        backgroundColor: Colors.transparent,
+        radius: 47.0,
+        child: Image.asset('assets/images/covid.png'),
+      ),
+    );
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: appBar(context)),
+        // ignore: prefer_const_constructors
+        backgroundColor: Color.fromARGB(255, 6, 6, 108),
+        elevation: 0.0,
+        // ignore: deprecated_member_use
+        brightness: Brightness.light,
+      ),
+      body: Container(
+        color: const Color.fromARGB(255, 6, 6, 108),
+        child: Form(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              children: [
+                const Spacer(),
+                logo,
+                const SizedBox(height: 50.0),
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.person, color: Colors.white),
+                    hintText: 'Username or Gmail',
+                    hintStyle: TextStyle(color: Colors.white),
+                    labelText: "Email",
+                    labelStyle: TextStyle(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      fontSize: 16,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                  validator: (val) {
+                    return val!.isEmpty ? "Enter correct email" : null;
+                  },
+                  onChanged: (val) {
+                    email = val;
+                  },
+                ),
+                const SizedBox(height: 10),
+                TextFormField(
+                  validator: (val) {
+                    return val!.isEmpty ? "Enter correct password" : null;
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.key, color: Colors.white),
+                    hintText: 'Pasword',
+                    labelText: "pasword",
+                    labelStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.0),
+                      ),
+                    ),
+                  ),
+                  onChanged: (val) {
+                    password = val;
+                  },
+                ),
+                const SizedBox(height: 50),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MainPage()),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width - 48,
+                    child: const Text(
+                      'Sign Up',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Don't have an account? ",
+                      style: TextStyle(
+                        fontSize: 15.5,
+                        color: Colors.white,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => SignUp()));
+                      },
+                      child: const Text(
+                        'Register now',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 26, 255),
+                          fontSize: 15.5,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
