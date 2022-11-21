@@ -1,5 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, unused_field, unused_label, non_constant_identifier_names, unused_import
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart ';
 import 'package:flutter_application_1/widgets/widgets.dart';
 import 'package:flutter_application_1/views/signup.dart';
@@ -13,6 +15,22 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   late String email, password;
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  Future masuk() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim());
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +63,7 @@ class _SignInState extends State<SignIn> {
                 const SizedBox(height: 50.0),
                 TextFormField(
                   keyboardType: TextInputType.emailAddress,
+                  controller: _emailController,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.person, color: Colors.white),
                     hintText: 'Username or Gmail',
@@ -69,10 +88,8 @@ class _SignInState extends State<SignIn> {
                 ),
                 const SizedBox(height: 10),
                 TextFormField(
-                  validator: (val) {
-                    return val!.isEmpty ? "Enter correct password" : null;
-                  },
-                  keyboardType: TextInputType.emailAddress,
+                  obscureText: true,
+                  controller: _passwordController,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.key, color: Colors.white),
                     hintText: 'Pasword',
@@ -93,12 +110,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 const SizedBox(height: 50),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MainPage()),
-                    );
-                  },
+                  onTap: masuk,
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 18),
                     decoration: BoxDecoration(

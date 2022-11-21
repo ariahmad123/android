@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/views/bantuanPage.dart';
 import 'package:flutter_application_1/views/home.dart';
 import 'package:flutter_application_1/views/informasiPage.dart';
-import '../views/theme.dart';
 import 'package:flutter_application_1/views/NavBar.dart';
 
 class MainPage extends StatefulWidget {
