@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart ';
 import 'package:flutter_application_1/views/signin.dart';
 import '../widgets/widgets.dart';
@@ -122,32 +123,23 @@ class _HomeviewState extends State<HomeView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              InputDecorator(
-                decoration: InputDecoration(
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 1, horizontal: 10),
-                  prefixIcon: Icon(Icons.location_on_outlined,
-                      color: Color.fromARGB(255, 47, 155, 165), size: 30.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(50.0),
-                    ),
+              DropdownSearch<String>(
+                popupProps: PopupProps.bottomSheet(
+                  showSelectedItems: true,
+                  // disabledItemFn: (String s) => s.startsWith('I'),
+                ),
+                items: ["Samarinda", "Tenggarong", "Kubar", 'Kutim'],
+                dropdownDecoratorProps: DropDownDecoratorProps(
+                  dropdownSearchDecoration: InputDecoration(
+                    labelText: "Pilih Kota",
+                    hintText: "Pilih kota sesuai tempatmu",
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20)),
                   ),
                 ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: nKota,
-                    onChanged: (String? value) {
-                      pilihKota(value!);
-                    },
-                    items: listKota.map((String value) {
-                      return DropdownMenuItem(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
+                onChanged: print,
               ),
             ],
           ),

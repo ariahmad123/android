@@ -20,9 +20,13 @@ class _SignInState extends State<SignIn> {
   final _passwordController = TextEditingController();
 
   Future masuk() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   @override
@@ -139,7 +143,9 @@ class _SignInState extends State<SignIn> {
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => SignUp()));
+                            MaterialPageRoute(builder: (context) {
+                          return SignUp();
+                        }));
                       },
                       child: const Text(
                         'Register now',

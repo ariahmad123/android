@@ -3,9 +3,13 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+  NavBar({super.key});
+
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +19,7 @@ class NavBar extends StatelessWidget {
         children: [
           UserAccountsDrawerHeader(
             accountName: const Text('ariahmaddhani'),
-            accountEmail: const Text('ariahmmadhani0@gmail.com'),
+            accountEmail: Text(user!.email!),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.asset(
@@ -52,7 +56,9 @@ class NavBar extends StatelessWidget {
           ListTile(
             title: const Text('Keluar'),
             leading: const Icon(Icons.exit_to_app),
-            onTap: () => null,
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+            },
           ),
         ],
       ),

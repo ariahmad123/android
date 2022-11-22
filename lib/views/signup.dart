@@ -1,8 +1,13 @@
 // ignore_for_file: unused_field, use_key_in_widget_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart ';
+import 'package:flutter/services.dart';
 import 'package:flutter_application_1/views/signin.dart';
 import '../widgets/widgets.dart';
+
+final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SignUp extends StatefulWidget {
   @override
@@ -13,6 +18,29 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
   late String name, email, password;
+
+  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _passwordcontroller = TextEditingController();
+  late bool _suceess;
+  late String _userEmail;
+
+  void _register() async {
+    final User? user = (await _auth.createUserWithEmailAndPassword(
+            email: _emailcontroller.text, password: _passwordcontroller.text))
+        .user;
+
+    if (user != null) {
+      setState(() {
+        _suceess = true;
+        _userEmail = user.email!;
+      });
+    } else {
+      setState(() {
+        _suceess = false;
+      });
+    }
+  }
+
   @override
   // ignore: override_on_non_overriding_member
   Widget build(BuildContext context) {
@@ -43,6 +71,7 @@ class _SignUpState extends State<SignUp> {
                 logo,
                 const SizedBox(height: 10.0),
                 TextFormField(
+                  controller: _emailcontroller,
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.email, color: Colors.white),
@@ -62,22 +91,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 6),
                 TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.person, color: Colors.white),
-                    hintText: 'Username',
-                    labelText: "Name",
-                    labelStyle: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 6),
-                TextFormField(
+                  controller: _passwordcontroller,
                   keyboardType: TextInputType.emailAddress,
                   validator: (val) {
                     return val!.isEmpty ? "Enter correct password" : null;
@@ -98,7 +112,9 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 24),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    _register();
+                  },
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 18),
                     decoration: BoxDecoration(
@@ -127,7 +143,9 @@ class _SignUpState extends State<SignUp> {
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => SignIn()));
+                            MaterialPageRoute(builder: (context) {
+                          return SignIn();
+                        }));
                       },
                       child: const Text(
                         'Sign In',
