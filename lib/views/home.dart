@@ -5,6 +5,7 @@ import 'dart:ui';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart ';
 import 'package:flutter_application_1/views/signin.dart';
+import 'package:flutter_application_1/views/detail.dart';
 import '../widgets/widgets.dart';
 import '../views/theme.dart';
 
@@ -169,7 +170,7 @@ class _HomeviewState extends State<HomeView> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Text(
                     "Terakhir Diupdate Tanggal 17 Oktober ",
                     style: TextStyle(
@@ -177,19 +178,20 @@ class _HomeviewState extends State<HomeView> {
                       color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
-
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     Navigator.pushReplacement(context,
-                  //         MaterialPageRoute(builder: (context) => SignUp()));
-                  //   },
-                  const Spacer(),
-                  Text(
-                    'Lihat detail',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 47, 155, 165),
-                      fontSize: 10.5,
-                      decoration: TextDecoration.underline,
+                  const SizedBox(width: 120.0),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Detail()),
+                      );
+                    },
+                    child: Text(
+                      "lihat detail",
+                      style: TextStyle(
+                        fontSize: 10.5,
+                        color: Color.fromARGB(255, 47, 155, 165),
+                      ),
                     ),
                   ),
                   Icon(
