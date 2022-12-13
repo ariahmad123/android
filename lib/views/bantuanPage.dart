@@ -26,7 +26,17 @@ class _BantuanPageState extends State<BantuanPage> {
           borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
-          color: const Color.fromARGB(255, 47, 155, 165),
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xFF3383CD),
+              Color(0xFF11249F),
+            ],
+          ),
+          image: DecorationImage(
+            image: AssetImage("assets/images/virus.png"),
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -45,7 +55,7 @@ class _BantuanPageState extends State<BantuanPage> {
               Container(
                 padding: EdgeInsets.only(
                   left: 30.0,
-                  top: 20.0,
+                  top: 0.0,
                   bottom: defaultMargin,
                 ),
                 child: Column(
@@ -65,13 +75,14 @@ class _BantuanPageState extends State<BantuanPage> {
                         fontSize: 30.0,
                       ),
                     ),
-                    SizedBox(height: defaultMargin),
+                    SizedBox(height: 40),
                   ],
                 ),
               ),
               Image.asset(
                 'assets/images/ambulance.png',
                 width: 200.0,
+                height: 190.0,
               ),
             ],
           ),
@@ -90,7 +101,7 @@ class _BantuanPageState extends State<BantuanPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Update Kasus Corona",
+                "Pusat Bantuan Covid",
                 style: blackTextStyle.copyWith(
                   fontWeight: bold,
                   fontSize: 20.0,
@@ -106,6 +117,109 @@ class _BantuanPageState extends State<BantuanPage> {
               ),
             ],
           ),
+        ),
+      );
+    }
+
+    Widget gejala() {
+      return Container(
+        margin: EdgeInsets.only(
+          right: MediaQuery.of(context).size.height * 0.02,
+          left: MediaQuery.of(context).size.height * 0.02,
+          bottom: defaultMargin,
+        ),
+        child: Row(
+          children: [
+            Container(
+              padding: EdgeInsets.only(
+                left: 20.0,
+                top: 10.0,
+                bottom: 10.0,
+                right: 20.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color(0xFF3383CD),
+                    Color(0xFF11249F),
+                  ],
+                ),
+                image: DecorationImage(
+                  image: AssetImage("assets/images/virus.png"),
+                ),
+              ),
+              child: ClipRRect(
+                child: Image(
+                  image: AssetImage('assets/images/headache.png'),
+                  width: 70.0,
+                  height: 80.0,
+                ),
+              ),
+            ),
+            SizedBox(width: 10.0),
+            Container(
+              padding: EdgeInsets.only(
+                left: 20.0,
+                top: 10.0,
+                bottom: 10.0,
+                right: 20.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color(0xFF3383CD),
+                    Color(0xFF11249F),
+                  ],
+                ),
+                image: DecorationImage(
+                  image: AssetImage("assets/images/virus.png"),
+                ),
+              ),
+              child: ClipRRect(
+                child: Image(
+                  image: AssetImage('assets/images/fever.png'),
+                  width: 70.0,
+                  height: 80.0,
+                ),
+              ),
+            ),
+            SizedBox(width: 10.0),
+            Container(
+              padding: EdgeInsets.only(
+                left: 20.0,
+                top: 10.0,
+                bottom: 10.0,
+                right: 20.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [
+                    Color(0xFF3383CD),
+                    Color(0xFF11249F),
+                  ],
+                ),
+                image: DecorationImage(
+                  image: AssetImage("assets/images/virus.png"),
+                ),
+              ),
+              child: ClipRRect(
+                child: Image(
+                  image: AssetImage('assets/images/caugh.png'),
+                  width: 70.0,
+                  height: 80.0,
+                ),
+              ),
+            ),
+          ],
         ),
       );
     }
@@ -249,6 +363,7 @@ class _BantuanPageState extends State<BantuanPage> {
       children: [
         banner(),
         menu(),
+        gejala(),
         Expanded(
           child: ListView(
             children: [

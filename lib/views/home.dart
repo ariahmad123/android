@@ -36,10 +36,20 @@ class _HomeviewState extends State<HomeView> {
           bottom: defaultMargin,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(
+          borderRadius: const BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
-          color: Color.fromARGB(255, 47, 155, 165),
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xFF3383CD),
+              Color(0xFF11249F),
+            ],
+          ),
+          image: DecorationImage(
+            image: AssetImage("assets/images/virus.png"),
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -178,7 +188,7 @@ class _HomeviewState extends State<HomeView> {
                       color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
-                  const SizedBox(width: 120.0),
+                  const SizedBox(width: 100.0),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -189,8 +199,8 @@ class _HomeviewState extends State<HomeView> {
                     child: Text(
                       "lihat detail",
                       style: TextStyle(
-                        fontSize: 10.5,
-                        color: Color.fromARGB(255, 47, 155, 165),
+                        fontSize: 15.5,
+                        color: Color.fromARGB(255, 0, 55, 255),
                       ),
                     ),
                   ),
@@ -208,165 +218,169 @@ class _HomeviewState extends State<HomeView> {
     }
 
     Widget data() {
-      return Container(
-        margin: EdgeInsets.only(
-          left: defaultMargin,
-          top: 5.0,
-          right: defaultMargin,
-          bottom: defaultMargin,
-        ),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(20),
-            bottom: Radius.circular(20),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
+      return Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              left: defaultMargin,
+              top: 5.0,
+              right: defaultMargin,
+              bottom: defaultMargin,
             ),
-          ],
-          color: Color.fromARGB(255, 255, 255, 255),
-        ),
-        child: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                padding: EdgeInsets.only(
-                  left: defaultMargin,
-                  right: defaultMargin,
-                  top: 10.0,
-                  bottom: 10.0,
-                ),
-                child: Container(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(60),
-                                  color: Colors.red.withOpacity(0.2),
-                                ),
-                                child: ClipRRect(
-                                  child: Image(
-                                    image:
-                                        AssetImage('assets/images/vector.png'),
-                                    width: 30.0,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10.0,
-                                // width: 100.0,
-                              ),
-                              Text(
-                                "80",
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: bold,
-                                  fontSize: 50.0,
-                                  color: Color.fromARGB(255, 255, 81, 0),
-                                ),
-                              ),
-                              Text(
-                                "Positif",
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: bold,
-                                  fontSize: 15.0,
-                                  color: Color.fromARGB(255, 255, 81, 0),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(60),
-                                  color: Colors.green.withOpacity(0.2),
-                                ),
-                                child: ClipRRect(
-                                  child: Image(
-                                    image:
-                                        AssetImage('assets/images/vector2.png'),
-                                    width: 30.0,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10.0,
-                                width: 180.0,
-                              ),
-                              Text(
-                                "18",
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: bold,
-                                  fontSize: 50.0,
-                                  color: Color.fromARGB(255, 0, 192, 13),
-                                ),
-                              ),
-                              Text(
-                                "Sembuh",
-                                style: blackTextStyle.copyWith(
-                                  fontWeight: bold,
-                                  fontSize: 15.0,
-                                  color: Color.fromARGB(255, 0, 192, 13),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(60),
-                                color: Color.fromARGB(255, 255, 17, 0)
-                                    .withOpacity(0.2),
-                              ),
-                              child: ClipRRect(
-                                child: Image(
-                                  image:
-                                      AssetImage('assets/images/vector3.png'),
-                                  width: 30.0,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10.0,
-                              // width: 100.0,
-                            ),
-                            Text(
-                              "50",
-                              style: blackTextStyle.copyWith(
-                                fontWeight: bold,
-                                fontSize: 50.0,
-                                color: Color.fromARGB(255, 255, 0, 0),
-                              ),
-                            ),
-                            Text(
-                              "Meninggal",
-                              style: blackTextStyle.copyWith(
-                                fontWeight: bold,
-                                fontSize: 15.0,
-                                color: Color.fromARGB(255, 255, 0, 0),
-                              ),
-                            ),
-                          ]),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20),
+                bottom: Radius.circular(20),
               ),
-            ],
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+            child: Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      left: defaultMargin,
+                      right: defaultMargin,
+                      top: 20.0,
+                      bottom: 20.0,
+                    ),
+                    child: Container(
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(60),
+                                      color: Colors.red.withOpacity(0.2),
+                                    ),
+                                    child: ClipRRect(
+                                      child: Image(
+                                        image: AssetImage(
+                                            'assets/images/vector.png'),
+                                        width: 30.0,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10.0,
+                                    // width: 100.0,
+                                  ),
+                                  Text(
+                                    "80",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: bold,
+                                      fontSize: 50.0,
+                                      color: Color.fromARGB(255, 255, 81, 0),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Positif",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: bold,
+                                      fontSize: 15.0,
+                                      color: Color.fromARGB(255, 255, 81, 0),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(60),
+                                      color: Colors.green.withOpacity(0.2),
+                                    ),
+                                    child: ClipRRect(
+                                      child: Image(
+                                        image: AssetImage(
+                                            'assets/images/vector2.png'),
+                                        width: 30.0,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10.0,
+                                    width: 180.0,
+                                  ),
+                                  Text(
+                                    "18",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: bold,
+                                      fontSize: 50.0,
+                                      color: Color.fromARGB(255, 0, 192, 13),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Sembuh",
+                                    style: blackTextStyle.copyWith(
+                                      fontWeight: bold,
+                                      fontSize: 15.0,
+                                      color: Color.fromARGB(255, 0, 192, 13),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(60),
+                                    color: Color.fromARGB(255, 255, 17, 0)
+                                        .withOpacity(0.2),
+                                  ),
+                                  child: ClipRRect(
+                                    child: Image(
+                                      image: AssetImage(
+                                          'assets/images/vector3.png'),
+                                      width: 30.0,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 10.0,
+                                  // width: 100.0,
+                                ),
+                                Text(
+                                  "50",
+                                  style: blackTextStyle.copyWith(
+                                    fontWeight: bold,
+                                    fontSize: 50.0,
+                                    color: Color.fromARGB(255, 255, 0, 0),
+                                  ),
+                                ),
+                                Text(
+                                  "Meninggal",
+                                  style: blackTextStyle.copyWith(
+                                    fontWeight: bold,
+                                    fontSize: 15.0,
+                                    color: Color.fromARGB(255, 255, 0, 0),
+                                  ),
+                                ),
+                              ]),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       );
     }
 
@@ -442,7 +456,14 @@ class _HomeviewState extends State<HomeView> {
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(60),
-                                  color: Color.fromARGB(255, 47, 155, 165),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xFF3383CD),
+                                      Color(0xFF11249F),
+                                    ],
+                                  ),
                                 ),
                                 child: ClipRRect(
                                   child: Image(
@@ -469,7 +490,14 @@ class _HomeviewState extends State<HomeView> {
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(60),
-                                  color: Color.fromARGB(255, 47, 155, 165),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xFF3383CD),
+                                      Color(0xFF11249F),
+                                    ],
+                                  ),
                                 ),
                                 child: ClipRRect(
                                   child: Image(
@@ -495,7 +523,14 @@ class _HomeviewState extends State<HomeView> {
                             Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(60),
-                                color: Color.fromARGB(255, 47, 155, 165),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft,
+                                  colors: [
+                                    Color(0xFF3383CD),
+                                    Color(0xFF11249F),
+                                  ],
+                                ),
                               ),
                               child: ClipRRect(
                                 child: Image(
@@ -527,7 +562,14 @@ class _HomeviewState extends State<HomeView> {
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(60),
-                                  color: Color.fromARGB(255, 47, 155, 165),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xFF3383CD),
+                                      Color(0xFF11249F),
+                                    ],
+                                  ),
                                 ),
                                 child: ClipRRect(
                                   child: Image(
@@ -554,7 +596,14 @@ class _HomeviewState extends State<HomeView> {
                               Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(50),
-                                  color: Color.fromARGB(255, 47, 155, 165),
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xFF3383CD),
+                                      Color(0xFF11249F),
+                                    ],
+                                  ),
                                 ),
                                 child: ClipRRect(
                                   child: Image(

@@ -30,11 +30,14 @@ class NavBar extends StatelessWidget {
                 ),
               ),
             ),
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 47, 155, 165),
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage('assets/images/dokter.png'),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Color.fromARGB(255, 58, 137, 210),
+                  Color.fromARGB(255, 21, 42, 182),
+                ],
               ),
             ),
           ),

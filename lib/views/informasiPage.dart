@@ -25,7 +25,17 @@ class _InformasiPageState extends State<InformasiPage> {
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(30),
           ),
-          color: Color.fromARGB(255, 47, 155, 165),
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xFF3383CD),
+              Color(0xFF11249F),
+            ],
+          ),
+          image: DecorationImage(
+            image: AssetImage("assets/images/virus.png"),
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),

@@ -31,7 +31,25 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       drawer: NavBar(),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 47, 155, 165),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color.fromARGB(255, 58, 137, 210),
+                Color.fromARGB(255, 21, 42, 182),
+              ],
+            ),
+          ),
+        ),
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+
         title: Center(
           child: Row(
             children: [
@@ -67,7 +85,7 @@ class _MainPageState extends State<MainPage> {
         onTap: onTap,
         currentIndex: currentIndex,
         selectedItemColor: Colors.red,
-        unselectedItemColor: Color.fromARGB(255, 47, 155, 165),
+        unselectedItemColor: Color.fromARGB(255, 21, 42, 182),
         showSelectedLabels: true,
         showUnselectedLabels: false,
         items: [

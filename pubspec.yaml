@@ -96,6 +96,13 @@ flutter:
     - assets/images/phone.png
     - assets/images/konsultasi.png
     - assets/images/red-circle-button-with-white-plus-ferst-aid-health-care-emergency-help-3d-icon_313242-1185-removebg-preview 1).png
+    - assets/images/male.png
+    - assets/images/female.png
+    - assets/images/virus.png
+    - assets/images/Drcorona.svg
+    - assets/images/headache.png
+    - assets/images/fever.png
+    - assets/images/caugh.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -79,8 +79,8 @@ class _DetailState extends State<Detail> {
                           padding: EdgeInsets.only(
                             left: defaultMargin,
                             right: defaultMargin,
-                            top: 10.0,
-                            bottom: 10.0,
+                            top: 20.0,
+                            bottom: 20.0,
                           ),
                           child: Container(
                             child: Column(
@@ -89,9 +89,8 @@ class _DetailState extends State<Detail> {
                                     style: blackTextStyle.copyWith(
                                         fontWeight: bold,
                                         fontSize: 20.0,
-                                        color:
-                                            Color.fromARGB(255, 16, 206, 70))),
-                                SizedBox(height: 10),
+                                        color: Color.fromARGB(255, 0, 0, 0))),
+                                SizedBox(height: 20),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -100,6 +99,7 @@ class _DetailState extends State<Detail> {
                                     Column(
                                       children: [
                                         Container(
+                                          padding: EdgeInsets.all(10),
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(60),
@@ -145,6 +145,7 @@ class _DetailState extends State<Detail> {
                                     Column(
                                       children: [
                                         Container(
+                                          padding: EdgeInsets.all(10),
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(60),
@@ -161,7 +162,7 @@ class _DetailState extends State<Detail> {
                                         ),
                                         SizedBox(
                                           height: 20.0,
-                                          width: 180.0,
+                                          width: 160.0,
                                         ),
                                         Text(
                                           sessions[index]['jumlah_sembuh']
@@ -188,50 +189,168 @@ class _DetailState extends State<Detail> {
                                         ),
                                       ],
                                     ),
-                                    Column(children: [
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(60),
-                                          color: Color.fromARGB(255, 255, 17, 0)
-                                              .withOpacity(0.2),
-                                        ),
-                                        child: ClipRRect(
-                                          child: Image(
-                                            image: AssetImage(
-                                                'assets/images/vector3.png'),
-                                            width: 30.0,
+                                    Column(
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(60),
+                                            color:
+                                                Color.fromARGB(255, 255, 17, 0)
+                                                    .withOpacity(0.2),
+                                          ),
+                                          child: ClipRRect(
+                                            child: Image(
+                                              image: AssetImage(
+                                                  'assets/images/vector3.png'),
+                                              width: 30.0,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 20.0,
-                                        // width: 100.0,
-                                      ),
-                                      Text(
-                                        sessions[index]['jumlah_meninggal']
-                                            .toString(),
-                                        style: blackTextStyle.copyWith(
-                                          fontWeight: bold,
-                                          fontSize: 20.0,
-                                          color: Color.fromARGB(255, 255, 0, 0),
+                                        SizedBox(
+                                          height: 20.0,
+                                          // width: 100.0,
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 20.0,
-                                        // width: 100.0,
-                                      ),
-                                      Text(
-                                        "Meninggal",
-                                        style: blackTextStyle.copyWith(
-                                          fontWeight: bold,
-                                          fontSize: 15.0,
-                                          color: Color.fromARGB(255, 255, 0, 0),
+                                        Text(
+                                          sessions[index]['jumlah_meninggal']
+                                              .toString(),
+                                          style: blackTextStyle.copyWith(
+                                            fontWeight: bold,
+                                            fontSize: 20.0,
+                                            color:
+                                                Color.fromARGB(255, 255, 0, 0),
+                                          ),
                                         ),
-                                      ),
-                                    ]),
+                                        SizedBox(
+                                          height: 20.0,
+                                          // width: 100.0,
+                                        ),
+                                        Text(
+                                          "Meninggal",
+                                          style: blackTextStyle.copyWith(
+                                            fontWeight: bold,
+                                            fontSize: 15.0,
+                                            color:
+                                                Color.fromARGB(255, 255, 0, 0),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
-                                )
+                                ),
+                                Column(
+                                  children: [
+                                    // key jenis kelamin
+
+                                    SizedBox(height: 20),
+                                    Row(
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(60),
+                                                color: Color.fromARGB(
+                                                        255, 118, 100, 99)
+                                                    .withOpacity(0.2),
+                                              ),
+                                              child: ClipRRect(
+                                                child: Image(
+                                                  image: AssetImage(
+                                                      'assets/images/male.png'),
+                                                  width: 30.0,
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20.0,
+                                              // width: 100.0,
+                                            ),
+                                            Text(
+                                              sessions[index]['jenis_kelamin']
+                                                      [0]['doc_count']
+                                                  .toString(),
+                                              style: blackTextStyle.copyWith(
+                                                fontWeight: bold,
+                                                fontSize: 20.0,
+                                                color: Color.fromARGB(
+                                                    255, 118, 100, 99),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20.0,
+                                              // width: 100.0,
+                                            ),
+                                            Text(
+                                                sessions[index]['jenis_kelamin']
+                                                        [0]['key']
+                                                    .toString(),
+                                                style: blackTextStyle.copyWith(
+                                                    fontWeight: bold,
+                                                    fontSize: 10.0,
+                                                    color: Color.fromRGBO(
+                                                        118, 100, 99, 1))),
+                                          ],
+                                        ),
+                                        SizedBox(width: 50),
+                                        Column(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(10),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(60),
+                                                color: Color.fromRGBO(
+                                                        118, 100, 99, 1)
+                                                    .withOpacity(0.2),
+                                              ),
+                                              child: ClipRRect(
+                                                child: Image(
+                                                  image: AssetImage(
+                                                      'assets/images/female.png'),
+                                                  width: 30.0,
+                                                ),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20.0,
+                                              // width: 100.0,
+                                            ),
+                                            Text(
+                                              sessions[index]['jenis_kelamin']
+                                                      [0]['doc_count']
+                                                  .toString(),
+                                              style: blackTextStyle.copyWith(
+                                                fontWeight: bold,
+                                                fontSize: 20.0,
+                                                color: Color.fromRGBO(
+                                                    118, 100, 99, 1),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 20.0,
+                                              // width: 100.0,
+                                            ),
+                                            Text(
+                                              sessions[index]['jenis_kelamin']
+                                                      [1]['key']
+                                                  .toString(),
+                                              style: blackTextStyle.copyWith(
+                                                fontWeight: bold,
+                                                fontSize: 10.0,
+                                                color: Color.fromRGBO(
+                                                    118, 100, 99, 1),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
