@@ -78,8 +78,8 @@ class _InformasiPageState extends State<InformasiPage> {
                 ),
               ),
               Image.asset(
-                'assets/images/dokter.png',
-                width: 200.0,
+                'assets/images/3Ddoctor.png',
+                width: 180.0,
               ),
             ],
           ),

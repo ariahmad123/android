@@ -45,6 +45,9 @@ class _DetailState extends State<Detail> {
         title: const Text("Results"),
       ),
       body: Container(
+          margin: EdgeInsets.only(
+            top: 20.0,
+          ),
           child: ListView.builder(
               shrinkWrap: true,
               itemCount: listC,

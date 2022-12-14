@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/views/theme.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class BantuanPage extends StatefulWidget {
   const BantuanPage({Key? key}) : super(key: key);
@@ -128,98 +129,100 @@ class _BantuanPageState extends State<BantuanPage> {
           left: MediaQuery.of(context).size.height * 0.02,
           bottom: defaultMargin,
         ),
-        child: Row(
-          children: [
-            Container(
-              padding: EdgeInsets.only(
-                left: 20.0,
-                top: 10.0,
-                bottom: 10.0,
-                right: 20.0,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Color(0xFF3383CD),
-                    Color(0xFF11249F),
-                  ],
+        child: Center(
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.only(
+                  left: 20.0,
+                  top: 10.0,
+                  bottom: 10.0,
+                  right: 20.0,
                 ),
-                image: DecorationImage(
-                  image: AssetImage("assets/images/virus.png"),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xFF3383CD),
+                      Color(0xFF11249F),
+                    ],
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/virus.png"),
+                  ),
                 ),
-              ),
-              child: ClipRRect(
-                child: Image(
-                  image: AssetImage('assets/images/headache.png'),
-                  width: 70.0,
-                  height: 80.0,
-                ),
-              ),
-            ),
-            SizedBox(width: 10.0),
-            Container(
-              padding: EdgeInsets.only(
-                left: 20.0,
-                top: 10.0,
-                bottom: 10.0,
-                right: 20.0,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Color(0xFF3383CD),
-                    Color(0xFF11249F),
-                  ],
-                ),
-                image: DecorationImage(
-                  image: AssetImage("assets/images/virus.png"),
+                child: ClipRRect(
+                  child: Image(
+                    image: AssetImage('assets/images/headache.png'),
+                    width: 75.0,
+                    height: 80.0,
+                  ),
                 ),
               ),
-              child: ClipRRect(
-                child: Image(
-                  image: AssetImage('assets/images/fever.png'),
-                  width: 70.0,
-                  height: 80.0,
+              SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+              Container(
+                padding: EdgeInsets.only(
+                  left: 20.0,
+                  top: 10.0,
+                  bottom: 10.0,
+                  right: 20.0,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xFF3383CD),
+                      Color(0xFF11249F),
+                    ],
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/virus.png"),
+                  ),
+                ),
+                child: ClipRRect(
+                  child: Image(
+                    image: AssetImage('assets/images/fever.png'),
+                    width: 75.0,
+                    height: 80.0,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(width: 10.0),
-            Container(
-              padding: EdgeInsets.only(
-                left: 20.0,
-                top: 10.0,
-                bottom: 10.0,
-                right: 20.0,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Color(0xFF3383CD),
-                    Color(0xFF11249F),
-                  ],
+              SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+              Container(
+                padding: EdgeInsets.only(
+                  left: 20.0,
+                  top: 10.0,
+                  bottom: 10.0,
+                  right: 20.0,
                 ),
-                image: DecorationImage(
-                  image: AssetImage("assets/images/virus.png"),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xFF3383CD),
+                      Color(0xFF11249F),
+                    ],
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/virus.png"),
+                  ),
+                ),
+                child: ClipRRect(
+                  child: Image(
+                    image: AssetImage('assets/images/caugh.png'),
+                    width: 75.0,
+                    height: 80.0,
+                  ),
                 ),
               ),
-              child: ClipRRect(
-                child: Image(
-                  image: AssetImage('assets/images/caugh.png'),
-                  width: 70.0,
-                  height: 80.0,
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }
@@ -368,62 +371,14 @@ class _BantuanPageState extends State<BantuanPage> {
           child: ListView(
             children: [
               buildButton(
-                image: 'assets/images/phone.png',
-                text: 'Hotline Pusat',
-                text1: 'PANGGIL',
-                color: Color.fromARGB(255, 16, 190, 16),
-                color1: Colors.green.withOpacity(0.2),
-                onClicked: () => showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder: (context) => Container(
-                    padding: EdgeInsets.only(
-                        bottom: 20.0, left: 40.0, right: 40.0, top: 20.0),
-                    height: MediaQuery.of(context).size.height * 0.60,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: const Radius.circular(25.0),
-                        topRight: const Radius.circular(25.0),
-                      ),
-                    ),
-                    child: ListView(
-                      children: [
-                        GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: Icon(
-                            Icons.keyboard_arrow_down,
-                            size: 20.0,
-                          ),
-                        ),
-                        Image(
-                          image: AssetImage('assets/images/Virus-pana.png'),
-                          width: 100.0,
-                          height: 100.0,
-                        ),
-                        Text(
-                          "Apa itu Virus Corona?",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        ),
-                        SizedBox(height: 10.0),
-                        Text(
-                          "Virus corona adalah keluarga besar virus yang menyebabkan penyakit pada hewan dan manusia. Beberapa virus corona yang dikenal menyebabkan infeksi saluran pernapasan ringan hingga penyakit yang lebih serius seperti Middle East Respiratory Syndrome (MERS) dan Sindrom Pernafasan Akut Berat/Severe Acute Respiratory Syndrome (SARS). Virus corona baru yang ditemukan menyebabkan penyakit COVID-19.",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff333333),
-                          ),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+                  image: 'assets/images/phone.png',
+                  text: 'Ambulance',
+                  text1: 'PANGGIL',
+                  color: Color.fromARGB(255, 16, 190, 16),
+                  color1: Colors.green.withOpacity(0.2),
+                  onClicked: () {
+                    FlutterPhoneDirectCaller.callNumber('119');
+                  }),
               const SizedBox(height: 10.0),
               buildButton1(
                 image: 'assets/images/konsultasi.png',
