@@ -92,7 +92,7 @@ class _HomeviewState extends State<HomeView> {
                 ),
               ),
               Image.asset(
-                'assets/images/Logo.png',
+                'assets/images/3Dcovid.png',
                 width: 200.0,
               ),
             ],
@@ -188,7 +188,7 @@ class _HomeviewState extends State<HomeView> {
                       color: Color.fromARGB(255, 0, 0, 0),
                     ),
                   ),
-                  const SizedBox(width: 100.0),
+                  SizedBox(width: MediaQuery.of(context).size.width * 0.230),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
