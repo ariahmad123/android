@@ -1,7 +1,9 @@
 // ignore_for_file: file_names, avoid_unnecessary_containers, duplicate_ignore, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:flutter_application_1/views/theme.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class BantuanPage extends StatefulWidget {
@@ -13,6 +15,31 @@ class BantuanPage extends StatefulWidget {
 }
 
 class _BantuanPageState extends State<BantuanPage> {
+  int listC = 0;
+  var sessions = [];
+
+  var pincode = "";
+
+  @override
+  void initState() {
+    // ignore: todo
+    // TODO: implement initState
+    print(pincode);
+    getData();
+    super.initState();
+  }
+
+  getData() async {
+    var url = Uri.parse('https://data.covid19.go.id/public/api/prov.json');
+    var response = await http.get(url);
+    var result = jsonDecode(response.body);
+    print(result);
+    setState(() {
+      sessions = result['list_data'];
+      listC = sessions.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget banner() {
@@ -94,7 +121,7 @@ class _BantuanPageState extends State<BantuanPage> {
     Widget menu() {
       return Container(
         margin: EdgeInsets.only(
-          right: MediaQuery.of(context).size.height * 0.15,
+          right: MediaQuery.of(context).size.height * 0.10,
           bottom: defaultMargin,
         ),
         child: Container(
@@ -156,12 +183,12 @@ class _BantuanPageState extends State<BantuanPage> {
                 child: ClipRRect(
                   child: Image(
                     image: AssetImage('assets/images/headache.png'),
-                    width: 75.0,
+                    width: 70.0,
                     height: 80.0,
                   ),
                 ),
               ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.03),
               Container(
                 padding: EdgeInsets.only(
                   left: 20.0,
@@ -186,12 +213,12 @@ class _BantuanPageState extends State<BantuanPage> {
                 child: ClipRRect(
                   child: Image(
                     image: AssetImage('assets/images/fever.png'),
-                    width: 75.0,
+                    width: 70.0,
                     height: 80.0,
                   ),
                 ),
               ),
-              SizedBox(width: MediaQuery.of(context).size.width * 0.04),
+              SizedBox(width: MediaQuery.of(context).size.width * 0.03),
               Container(
                 padding: EdgeInsets.only(
                   left: 20.0,
@@ -216,7 +243,7 @@ class _BantuanPageState extends State<BantuanPage> {
                 child: ClipRRect(
                   child: Image(
                     image: AssetImage('assets/images/caugh.png'),
-                    width: 75.0,
+                    width: 70.0,
                     height: 80.0,
                   ),
                 ),
@@ -409,22 +436,24 @@ class _BantuanPageState extends State<BantuanPage> {
                           ),
                         ),
                         Image(
-                          image: AssetImage('assets/images/Virus-pana.png'),
+                          image: AssetImage('assets/images/konsultasi.png'),
                           width: 100.0,
                           height: 100.0,
                         ),
-                        Text(
-                          "Apa itu Virus Corona?",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
+                        Center(
+                          child: Text(
+                            "Hotline Pusat covid-19",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                          ),
                         ),
                         SizedBox(height: 10.0),
                         Text(
-                          "Virus corona adalah keluarga besar virus yang menyebabkan penyakit pada hewan dan manusia. Beberapa virus corona yang dikenal menyebabkan infeksi saluran pernapasan ringan hingga penyakit yang lebih serius seperti Middle East Respiratory Syndrome (MERS) dan Sindrom Pernafasan Akut Berat/Severe Acute Respiratory Syndrome (SARS). Virus corona baru yang ditemukan menyebabkan penyakit COVID-19.",
+                          "1.Depok: 112 dan 119\n2.Majalengka: 112\n3.Sukabumi:08001000119\n3.Bandung: 082118219287\n4.Garut: 0262-2802800 and 119\n5.Indramayu: 08111333314\n6.Kuningan: 081388284346\n7.Cirebon: 0231 – 8800119 / 081998800119\n8.Bekasi: 112/119 – 021 89910039 – 08111139927 085283980119 \n9.Cirebon: 119 \n10.Bogor: 0251-8363335, 08111116093 \n11.Purwakarta: 112 / 081909514472 \n12.Bogor: 119 dan 112 \n13.Ciamis: 119 – 081394489808 – 085314993901 \n14.Karawang: 085282537355 – 119 \n15.Cianjur: 085321161119 \n16.Cimahi: 08122126256 and 081221423039 \n17.Banjar: 085223344119 and 082120370313 \n18.Pangandaran: 119/085320643695 \n19.Sumedang: 119 \n20.West Bandung: 089522434611 \n21.Tasikmalaya: 119 \n22.Bandung: 112 and 119. \n23.Kuningan: 081388284346 \n24.Subang: 081322916001 / 082115467455",
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 10,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff333333),
                           ),
@@ -447,7 +476,7 @@ class _BantuanPageState extends State<BantuanPage> {
                   backgroundColor: Colors.transparent,
                   builder: (context) => Container(
                     padding: EdgeInsets.only(
-                        bottom: 20.0, left: 40.0, right: 40.0, top: 20.0),
+                        bottom: 20.0, left: 20.0, right: 20.0, top: 20.0),
                     height: MediaQuery.of(context).size.height * 0.60,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -456,42 +485,36 @@ class _BantuanPageState extends State<BantuanPage> {
                         topRight: const Radius.circular(25.0),
                       ),
                     ),
-                    child: ListView(
-                      children: [
-                        GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: Icon(
-                            Icons.keyboard_arrow_down,
-                            size: 20.0,
-                          ),
-                        ),
-                        Image(
-                          image: AssetImage('assets/images/Virus-pana.png'),
-                          width: 100.0,
-                          height: 100.0,
-                        ),
-                        Text(
-                          "Apa itu Virus Corona?",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                        ),
-                        SizedBox(height: 10.0),
-                        Text(
-                          "Virus corona adalah keluarga besar virus yang menyebabkan penyakit pada hewan dan manusia. Beberapa virus corona yang dikenal menyebabkan infeksi saluran pernapasan ringan hingga penyakit yang lebih serius seperti Middle East Respiratory Syndrome (MERS) dan Sindrom Pernafasan Akut Berat/Severe Acute Respiratory Syndrome (SARS). Virus corona baru yang ditemukan menyebabkan penyakit COVID-19.",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff333333),
-                          ),
-                          textAlign: TextAlign.justify,
-                        ),
-                      ],
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: listC,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            Image(
+                              image: AssetImage(
+                                  'assets/images/red-circle-button-with-white-plus-ferst-aid-health-care-emergency-help-3d-icon_313242-1185-removebg-preview 1).png'),
+                              width: 100.0,
+                              height: 100.0,
+                            ),
+                            SizedBox(height: 10.0),
+                            Text(
+                              sessions[index]['name'].toString(),
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff333333),
+                              ),
+                              textAlign: TextAlign.justify,
+                            ),
+                            SizedBox(height: 10.0),
+                          ],
+                        );
+                      },
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
